@@ -10,14 +10,20 @@ namespace ConsoleApp1
     {
         private string nombre;
         private string apellido;
+        private int dni;
+        private List<string> actividadesInscriptas;
 
-        public Socio(string nombre, string apellido)
+        public Socio(string nombre, string apellido, int dni)
         {
             this.Nombre = nombre;
             this.Apellido = apellido;
+            this.Dni = dni;
+            this.ActividadesInscriptas = new List<string>();
         }
 
-        public string Nombre { get => Nombre; set => Nombre = value; }
-        public string Apellido { get => Apellido; set => Apellido = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
+        public string Apellido { get => apellido; set => apellido = value; }
+        public int Dni { get => dni; set => dni = value; }
+        public List<string> ActividadesInscriptas { get => actividadesInscriptas; set => actividadesInscriptas = value; }
     }
 }
