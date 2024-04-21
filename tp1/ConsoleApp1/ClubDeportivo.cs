@@ -37,8 +37,8 @@ namespace ConsoleApp1
 
         public string inscribirActividad(string nombreActividad, int dni)
         {
-            Socio socioAInscribir = socios.Find(el => el.Dni == dni);
-            Actividad actividadAInscribir = actividades.Find(el => el.Nombre == nombreActividad);
+            Socio ? socioAInscribir = socios.Find(el => el.Dni == dni);
+            Actividad ? actividadAInscribir = actividades.Find(el => el.Nombre == nombreActividad);
             if (socioAInscribir == null)
             {
                 return "SOCIO INEXISTENTE";

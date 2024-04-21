@@ -10,6 +10,8 @@ Actividad hockey = new Actividad("Hockey", 10);
 Actividad gimnasio = new Actividad("Gimnasio", 10);
 
 Socio newSocio = new Socio("Alfredo","Caseros",22585655);
+Socio newSocio2 = new Socio("Diego", "Capusotto",25556425);
+
 
 //se registran nuevas actividades en el club
 Console.WriteLine(bocaJuniors.inscribirActividad(futbol));
@@ -28,6 +30,9 @@ Console.WriteLine(bocaJuniors.inscribirActividad(boxeo.Nombre, newSocio.Dni));
 
 //se intenta inscribir al socio en una actividad sin cupos disponibles
 Console.WriteLine(bocaJuniors.inscribirActividad(futbol.Nombre, newSocio.Dni));
+
+//se intenta inscribir a un socio no registrado en el club a una actividad
+Console.WriteLine(bocaJuniors.inscribirActividad(futbol.Nombre, newSocio2.Dni));
 
 //se inscribe exitosamente al socio en tres actividades
 Console.WriteLine(bocaJuniors.inscribirActividad(basquet.Nombre, newSocio.Dni));
