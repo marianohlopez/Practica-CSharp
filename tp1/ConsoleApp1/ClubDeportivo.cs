@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace ConsoleApp1
 {
@@ -17,10 +18,6 @@ namespace ConsoleApp1
             {
                 socios.Add(newSocio);
                 Console.WriteLine($"El socio {newSocio.Nombre} se registró exitosamente");
-                foreach(Socio socio in socios)
-                {
-                    Console.WriteLine(socio.Nombre);
-                }
             }
             else
             {
@@ -28,23 +25,43 @@ namespace ConsoleApp1
             }
         }
 
-        public void inscribirActividad(Actividad actividad)
+        public string inscribirActividad(Actividad actividad)
         {
             if (!actividades.Exists(item => item.Nombre == actividad.Nombre))
             {
                 actividades.Add(actividad);
-                Console.WriteLine($"La actividad {actividad.Nombre} se registró exitosamente");
-                Console.WriteLine(actividades);
+                return $"La actividad {actividad.Nombre} se registró exitosamente";
             }
-            else
-            {
-                Console.WriteLine($"La actividad {actividad.Nombre} ya existe");
-            }
+                return $"La actividad {actividad.Nombre} ya existe";
         }
 
-        public void inscribirActividad(string actividadAInscribir, int dni)
+        public string inscribirActividad(string nombreActividad, int dni)
         {
-            
+            Socio socioAInscribir = socios.Find(el => el.Dni == dni);
+            Actividad actividadAInscribir = actividades.Find(el => el.Nombre == nombreActividad);
+            if (socioAInscribir == null)
+            {
+                return "SOCIO INEXISTENTE";
+            }
+            if (actividadAInscribir == null)
+            {
+                return "ACTIVIDAD INEXISTENTE";
+            }
+            if(socioAInscribir.ActividadesInscriptas.Exists(el => el == nombreActividad))
+            {
+                return $"EL SOCIO {socioAInscribir.Nombre} YA SE ENCUENTRA INSCRIPTO EN {nombreActividad}";
+            }
+            if(actividadAInscribir.Cupos == 0)
+            {
+                return "NO QUEDAN MAS CUPOS PARA ESA ACTIVIDAD";
+            }
+            if (socioAInscribir.ActividadesInscriptas.Count >= 3)
+            {
+                return "TOPE DE ACTIVIDADES ALCANZADO";
+            }
+            socioAInscribir.ActividadesInscriptas.Add(nombreActividad);
+            actividadAInscribir.Cupos--;
+            return "INSCRIPCIÓN EXITOSA";
         }
     }
 }

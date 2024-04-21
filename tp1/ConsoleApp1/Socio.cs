@@ -15,10 +15,10 @@ namespace ConsoleApp1
 
         public Socio(string nombre, string apellido, int dni)
         {
-            this.Nombre = nombre;
-            this.Apellido = apellido;
-            this.Dni = dni;
-            this.ActividadesInscriptas = new List<string>();
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.dni = dni;
+            this.actividadesInscriptas = new List<string>();
         }
 
         public string Nombre { get => nombre; set => nombre = value; }
